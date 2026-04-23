@@ -1,14 +1,22 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 
-import UIKit
-var c = 100
-var greeting = "d \(c)"
-var x: Int = 200
-let y: String = "Hello"
-var z: Bool = false
-let o: Double = 3.14
-let xz = "See that \(x)"
-x = 150 // я попробовал, не получилось) но и ошибку не выдало
-print(xz)
+var nums : [Int] = [1,2,3,4,5]
+var nums1 = [2,3,4,5,6]
+var nums2 : Array<Int> = Array(arrayLiteral: 3,4,5,6,7) //я не понимаю какую роль играет "arrayLiteral", как будто-бы можно обойтись первым вариантом
 
+var sum = nums.reduce( 0 , + )
+var sum1 = nums1.reduce( 0 , + )
+var sum2 = nums2.reduce( 0 , + )
+
+nums.insert( 1, at:5)
+nums1.append(1)
+nums2.remove(at: 2)
+nums2.insert( 1, at:2)
+
+sum = nums.reduce( 0 , + )
+sum1 = nums1.reduce( 0 , + )
+sum2 = nums2.reduce( 0 , + )
+
+sum = nums3.reduce(0,+)
+print(sum)
