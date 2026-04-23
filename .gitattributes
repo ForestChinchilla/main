@@ -34,3 +34,25 @@ for number in nums {
     }
 }
  print(nums1)
+
+// Задача 3:
+// ловарь: подсчёт повторений
+// Дан массив строк (например, имена). Создай словарь, где:
+// * ключ — это строка
+// * значение — сколько раз она встречается
+
+
+
+let setnames = ["Anna","Brad","Leonardo","Elena","Steve"]
+var names = [String]()
+var randname = names.randomElement()
+
+//вот этот код не работает
+//for i in 1...100 {
+//    randname = setnames.randomElement()
+//    names.insert(randname, at: i)
+//}
+
+let colors = ["Red", "Green", "Blue"]
+let randomColor = colors.randomElement()  //а вот этот работает
+
