@@ -17,3 +17,6 @@ nums2.insert( 1, at:2)
 sum = nums.reduce( 0 , + )
 sum1 = nums1.reduce( 0 , + )
 sum2 = nums2.reduce( 0 , + )
+
+sum = nums3.reduce(0,+)
+print(sum)
