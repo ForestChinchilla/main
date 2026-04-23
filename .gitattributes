@@ -1,5 +1,6 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+// Задача 1
+// Массив: сумма элементов
+// Создай массив из 5 целых чисел и посчитай сумму всех элементов.
 
 var nums : [Int] = [1,2,3,4,5]
 var nums1 = [2,3,4,5,6]
@@ -20,3 +21,16 @@ sum2 = nums2.reduce( 0 , + )
 
 sum = nums3.reduce(0,+)
 print(sum)
+
+// Задача 2:
+// Массив: фильтрация
+// Дан массив чисел. Создай новый массив, в котором будут только чётные числа.
+
+var nums = 1...25
+var nums1 = [Int]()
+for number in nums {
+    if number % 2 == 0 {
+        nums1 += [number]
+    }
+}
+ print(nums1)
