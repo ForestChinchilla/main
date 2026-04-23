@@ -45,7 +45,7 @@ for number in nums {
 
 let setnames = ["Anna","Brad","Leonardo","Elena","Steve"]
 var names = [String]()
-var randname = names.randomElement()
+var randname = setnames.randomElement()
 
 //вот этот код не работает
 //for i in 1...100 {
@@ -56,3 +56,15 @@ var randname = names.randomElement()
 let colors = ["Red", "Green", "Blue"]
 let randomColor = colors.randomElement()  //а вот этот работает
 
+//вот таким образом сделал случайный массив имен, но хочется кророче
+
+let setnames = ["Anna","Brad","Leonardo","Elena","Steve"]
+var names = [String]()
+var randname = setnames.randomElement()
+var randindex : Int
+
+
+for i in 1...50 {
+    randindex = Int.random (in: 0...4)
+    names.insert(setnames[randindex], at: i-1 )
+}
