@@ -1,2 +1,14 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+import UIKit
+var c = 100
+var greeting = "d \(c)"
+var x: Int = 200
+let y: String = "Hello"
+var z: Bool = false
+let o: Double = 3.14
+let xz = "See that \(x)"
+x = 150 // я попробовал, не получилось) но и ошибку не выдало
+print(xz)
+
