@@ -61,3 +61,17 @@ print(dictionary)
 // * самый дорогой товар
 // * его цену
 
+let goods = ["Мука","Курица","Горох","Вейп","Дрипка","Бипка"]
+var shop : [String:Int] = [:]
+var randindex : Int
+var randcost : Int
+for i in 0...10 {
+    randindex = Int.random(in: 0...5)
+    randcost = Int.random (in: 1...500 )
+        shop[goods[randindex]] = randcost
+}
+print(shop)
+
+if let maxprice = shop.max(by: { $0.value < $1.value }) {                  
+    print("Самое дорогое в магазине: \(maxprice.value) \(maxprice.key)")
+}
