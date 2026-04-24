@@ -41,30 +41,23 @@ for number in nums {
 // * ключ — это строка
 // * значение — сколько раз она встречается
 
-
-
 let setnames = ["Anna","Brad","Leonardo","Elena","Steve"]
 var names = [String]()
-var randname = setnames.randomElement()
-
-//вот этот код не работает
-//for i in 1...100 {
-//    randname = setnames.randomElement()
-//    names.insert(randname, at: i)
-//}
-
-let colors = ["Red", "Green", "Blue"]
-let randomColor = colors.randomElement()  //а вот этот работает
-
-//вот таким образом сделал случайный массив имен, но хочется кророче
-
-let setnames = ["Anna","Brad","Leonardo","Elena","Steve"]
-var names = [String]()
-var randname = setnames.randomElement()
+var randname : String
 var randindex : Int
-
 
 for i in 1...50 {
     randindex = Int.random (in: 0...4)
     names.insert(setnames[randindex], at: i-1 )
 }
+var dictionary = [String: Int]()
+for i in 1...50 { dictionary [names[i-1], default: 0] += 1}
+
+print(dictionary)
+
+// Задача 4:
+// Словарь + массив
+// Есть словарь с товарами и их ценами. Найди:
+// * самый дорогой товар
+// * его цену
+
