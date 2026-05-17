@@ -1,8 +1,8 @@
-func ageTest (name: String, age:Int) {
+func ageTest(name: String, age:Int) {
     if age >= 18 {
         return print("Hey, \(name) let's do this")
     }
-    else{
+    else {
         return print("Oh no, \(name) is only \(age), you are too young for this shit")
     }
 }
