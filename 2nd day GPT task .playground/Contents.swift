@@ -66,14 +66,15 @@ for i in 1...4 {
     ordersOnKitchen.append(dynamicOrder)
     }
 
-// повар отметил заказ как готовый
+ // повар отметил заказ как готовый
+
 ordersOnKitchen[2].status = .done
 
 
 var collection = ordersOnKitchen.count
 
 //for i in 0..<collection {
-//    
+//
 //}
 //<>
 for (index, order) in ordersOnKitchen.enumerated() {
@@ -105,7 +106,7 @@ ordersOnKitchen.forEach { order in
 //<>
 //for (index, order in 0...3{
 //    print(ordersOnKitchen[i].first, ordersOnKitchen[i].second, ordersOnKitchen[i].price)
-//    
+//
 //}
 
 
@@ -113,4 +114,5 @@ ordersOnKitchen.forEach { order in
 var score = 95
 score -= 5
 print(score)
+
 

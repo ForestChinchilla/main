@@ -1,0 +1,94 @@
+// Задача 1
+// Массив: сумма элементов
+// Создай массив из 5 целых чисел и посчитай сумму всех элементов.
+
+var nums : [Int] = [1,2,3,4,5]
+var nums1 = [2,3,4,5,6]
+var nums2 : Array<Int> = Array(arrayLiteral: 3,4,5,6,7) //я не понимаю какую роль играет "arrayLiteral", как будто-бы можно обойтись первым вариантом
+
+var sum = nums.reduce( 0 , + )
+var sum1 = nums1.reduce( 0 , + )
+var sum2 = nums2.reduce( 0 , + )
+
+nums.insert( 1, at:5)
+nums1.append(1)
+nums2.remove(at: 2)
+nums2.insert( 1, at:2)
+
+sum = nums.reduce( 0 , + )
+sum1 = nums1.reduce( 0 , + )
+sum2 = nums2.reduce( 0 , + )
+
+sum = nums3.reduce(0,+)
+print(sum)
+
+// Задача 2:
+// Массив: фильтрация
+// Дан массив чисел. Создай новый массив, в котором будут только чётные числа.
+
+var nums = 1...25
+var nums1 = [Int]()
+for number in nums {
+    if number % 2 == 0 {
+        nums1 += [number]
+    }
+}
+ print(nums1)
+
+// Задача 3:
+// ловарь: подсчёт повторений
+// Дан массив строк (например, имена). Создай словарь, где:
+// * ключ — это строка
+// * значение — сколько раз она встречается
+
+let setnames = ["Anna","Brad","Leonardo","Elena","Steve"]
+var names = [String]()
+var randname : String
+var randindex : Int
+
+for i in 1...50 {
+    randindex = Int.random (in: 0...4)
+    names.insert(setnames[randindex], at: i-1 )
+}
+var dictionary = [String: Int]()
+for i in 1...50 { dictionary [names[i-1], default: 0] += 1}
+
+print(dictionary)
+
+// Задача 4:
+// Словарь + массив
+// Есть словарь с товарами и их ценами. Найди:
+// * самый дорогой товар
+// * его цену
+
+let goods = ["Мука","Курица","Горох","Вейп","Дрипка","Бипка"]
+var shop : [String:Int] = [:]
+var randindex : Int
+var randcost : Int
+for i in 0...10 {
+    randindex = Int.random(in: 0...5)
+    randcost = Int.random (in: 1...500 )
+        shop[goods[randindex]] = randcost
+}
+print(shop)
+
+if let maxprice = shop.max(by: { $0.value < $1.value }) {
+    print("Самое дорогое в магазине: \(maxprice.value) \(maxprice.key)")
+}
+
+// Задача 5:
+// Кортежи: работа с данными
+// Создай массив кортежей, где каждый кортеж — это (имя, возраст).
+// * найти самого старшего человека
+// * вывести его имя и возраст
+
+var per : [(name:String, age:Int)] = [
+    ("Anna",35)
+]
+per.append((name:"Brad", age:Int.random(in: 1...80)))
+per.append((name:"Leo", age:Int.random(in: 1...80)))
+per.append((name:"Max", age:Int.random(in: 1...80)))
+per.append((name:"Helen", age:Int.random(in: 1...80)))
+
+if let oldiest = per.max(by:{ $0.age < $1.age})
+{ print( "Самый старый \(oldiest.name) с возрастом \(oldiest.age)")}
