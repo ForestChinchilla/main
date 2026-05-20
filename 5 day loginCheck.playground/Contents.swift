@@ -21,16 +21,18 @@
 //login(username: "", password: "12345678")     // false
 //login(username: "alex", password: "password") // false
 
-func login(login: String, pass: String) -> Bool {
-    if login.count == 0 { return false }
-    else {
-        if pass.count < 8 { return false }
-        else {
-            if (pass.filter { $0.isNumber }.count > 0) { return true }
-            else { return false }
+func login(_ login: String,_ pass: String) -> Bool {
+    if login.count == 0 { return false
+    } else {
+        if pass.count < 8 { return false
+        } else {
+            if (pass.filter { $0.isNumber }.count > 0) { return true
+            } else {
+                return false
+                }
             }
         }
 }
 
-if login(login: "Shluha", pass: "davalka1") { print("ok") }
+if login("Shluha", "davalka1") { print("ok") }
 else { print("not") }
