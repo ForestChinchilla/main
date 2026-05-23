@@ -32,13 +32,13 @@ func login(_ login: String,_ pass: String) -> Bool {
                 return true
             } else {
                 return false
-                }
             }
         }
+    }
 }
 
 if login("Shluha", "davalka1") {
     print("ok")
 } else {
     print("not")
-    }
+}

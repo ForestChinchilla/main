@@ -3,7 +3,7 @@ func ageTest(name: String, age: Int) {
         print("Hey, \(name) let's do this")
     } else {
         print("Oh no, \(name) is only \(age), you are too young for this shit")
-        }
+    }
 }
 
 ageTest (name: "Vasya", age: 18)
