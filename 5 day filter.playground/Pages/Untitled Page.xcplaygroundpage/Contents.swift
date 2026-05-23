@@ -21,5 +21,21 @@ func arrFilter(_ array: [Int], _ filterValue: Int) -> [Int] {
 }
 
 let ar1 = [1,2,3,4,5,6,7,8,9,10]
-let ar2 = arrFilter(ar1,5)
+let ar2 = arrFilter(ar1, 4)
 print(ar2)
+
+
+// вариант 2 c forEach
+
+func arrFilter2(_ array: [Int],_ filterValue: Int) -> [Int] {
+    var filtredAr2 : [Int] = []
+    array.forEach { value in
+        if value >= filterValue {
+            filtredAr2.append(value)
+        }
+    }
+    return filtredAr2
+}
+
+let ar3 = arrFilter2(ar1, 3)
+print(ar3)
