@@ -10,11 +10,11 @@
 //filterGreaterThan([1, 5, 8, 2, 10], threshold: 5)
 //// [8, 10]
 
-func arrFilter (_ array: [Int],_ filterValue: (Int)) -> [Int] {
-    var filtredAr : [Int] = []
-    for index in 0...(array.count-1) {
-        if array[index] > filterValue {
-            filtredAr.append(array[index])
+func arrFilter(_ array: [Int], _ filterValue: Int) -> [Int] {
+    var filtredAr: [Int] = []
+    for value in array {
+        if value > filterValue {
+            filtredAr.append(value)
         }
     }
     return filtredAr
