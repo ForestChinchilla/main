@@ -27,10 +27,10 @@ print(ar2)
 
 // вариант 2 c forEach
 
-func arrFilter2(_ array: [Int],_ filterValue: Int) -> [Int] {
-    var filtredAr2 : [Int] = []
+func arrFilter2(_ array: [Int], _ filterValue: Int) -> [Int] {
+    var filtredAr2: [Int] = []
     array.forEach { value in
-        if value >= filterValue {
+        if value > filterValue {
             filtredAr2.append(value)
         }
     }
