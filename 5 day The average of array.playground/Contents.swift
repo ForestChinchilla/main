@@ -12,7 +12,7 @@
 //average([1, 2, 3, 4]) // 2.5
 //average([]) // 0
 
-func avrArray(_ array: [Int]) -> Double {
+func avrArray(array:[Int]) -> Double {
     if array.isEmpty {
         return 0
     } else {
@@ -20,5 +20,5 @@ func avrArray(_ array: [Int]) -> Double {
     }
 }
 
-let arr = ([1, 2, 3, 4])
-print(avrArray(arr))
+let arr = ([1, 2, 3, 4, 5])
+print(avrArray(array: arr))
