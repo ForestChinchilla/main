@@ -79,3 +79,15 @@ let bigFilter : ([String]) -> String = { array in
 }
 
 print(bigFilter(names))
+
+
+
+// у меня аж слюна брызжет от того насколько это компактнее того что я написал ранее))
+//
+let onesFilter = names
+    .filter { ($0.first?.isUppercase == true) && ($0.count > 3) }
+    .sorted()
+    .reduce("") { result, name in
+        result.isEmpty ? name : result + " " + name }
+
+print(onesFilter)

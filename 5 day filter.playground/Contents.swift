@@ -12,9 +12,9 @@
 
 func arrFilter (_ array: [Int],_ filterValue: Int) -> [Int] {
     var filtredAr: [Int] = []
-    for index in 0...(array.count-1) {
-        if array[index] > filterValue {
-            filtredAr.append(array[index])
+    for value in array {
+        if value > filterValue {
+            filtredAr.append(value)
         }
     }
     return filtredAr
@@ -22,4 +22,4 @@ func arrFilter (_ array: [Int],_ filterValue: Int) -> [Int] {
     
 let ar1 = [1,2,3,4,5,6,7,8,9,10]
 let ar2 = arrFilter(ar1,5)
-print (ar2)
+print(ar2)

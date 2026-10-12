@@ -50,14 +50,14 @@ func apply(
     x: Int,
     action: (Int) -> Int,
 ) -> Int {
-    var y: Int = x
+    var x: Int = x
     for _ in 0..<n {
-        y = action(y)
+        x = action(x)
     }
-    return y
+    return x
 }
 
-print(apply(
+print("final:", apply(
     n: 7,
     x: 3,
     action: {x in x + 2},

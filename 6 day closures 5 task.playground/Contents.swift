@@ -37,9 +37,9 @@ func makeCount () -> () -> Int {
 
 func makeCunt () -> () -> Int {
     var cunt = 0
-    print("first:", cunt)
-    return {
-        cunt += 1
+    print("first:", cunt)           //
+    return {                        //потому что вторая кложура со счетчиком не принимает значения от первой там же (№1) -> (№2) -> Int
+        cunt += 1                   
         print("second:",cunt)
         return  cunt
     }
@@ -70,3 +70,19 @@ print(cuntA())
 print(cuntA())
 //second: 3
 //3
+
+func counter() -> () -> Int {
+    var coco = 0
+    print("Yo")
+    return {
+        coco += 1
+        return coco
+    }
+}
+let cococounter = counter() 
+let lococounter = counter()
+print(cococounter())
+print(cococounter())
+counter()
+print(cococounter())
+print(lococounter())
