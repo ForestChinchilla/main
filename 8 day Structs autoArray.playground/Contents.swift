@@ -18,7 +18,7 @@ struct Car {
     var fuelType: String
     var note: String
     
-    func carInfo () -> Void {
+    func carInfo() {
         print("\(model) is a car of \(brand) autoconcern, manufacturing in \(year) year, have \(engineValue)cc \(fuelType) engine with \(power) horse power, it's a \(note) ")
     }
 }
@@ -62,9 +62,10 @@ print(newestCar(cars).model," is a newest car in our array")
 
 //интернет появился и я вспомнил .max ))
 //
-@MainActor func powerestCar (_ car:[Car]) -> Void {
-    var powerest = cars.max{ $0.power < $1.power }
-    print(powerest!.model," is a powerest car") //вот только без ! код не работал, Xcode предложил его добавить и я не устоял, я почитаю про него еще раз
+@MainActor func powerestCar(_ car:[Car]) {
+    guard let powerest = cars.max(by: { $0.power < $1.power }) else { return }
+    
+    print(powerest.model," is a powerest car") //вот только без ! код не работал, Xcode предложил его добавить и я не устоял, я почитаю про него еще раз
 }
 
 powerestCar(cars)
