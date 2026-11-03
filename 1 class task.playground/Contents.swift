@@ -34,6 +34,32 @@ struct Product {
 
 final class CartStore {
     // TODO: items, add(_:), remove(productId:), count, total
+    
+    private var arrayOfProduct: [Product]
+    
+    func add(_ product:Product) {
+        arrayOfProduct.insert(product, at: product.id)
+    }
+    
+    func remove(_ product:Product) {
+        arrayOfProduct.remove(at: product.id)
+    }
+    
+    func count() -> Int {
+        arrayOfProduct.count
+    }
+    
+    func total () -> Decimal {
+        var sum: Decimal = 0
+        for element in arrayOfProduct {
+            sum += element.price
+        }
+        return sum
+    }
+    
+    init (arrayOfProduct: [Product]) {
+        self.arrayOfProduct = arrayOfProduct
+    }
 }
 
 // MARK: - Экраны (не меняй)
@@ -87,3 +113,12 @@ check(badge.text, "", "Пустая корзина — бейдж скрыт")
  2.
  3.
  */
+//Почему можно мутировать cart, хотя он объявлен через let — и в экранах, и снаружи?
+//потому что cart это ссылка на класс CartStore, мы по сути карт то и не мутируем, мы мутируем массив внутри класса на который ссылается cart
+//
+//Сделай CartStore структурой. Что сломается при компиляции и почему?
+//при том же let cart: CartStore будет создана копия, а не ссылка на класс, порнуха начнется, в скрине и в табе будут разные копии
+//я думаю что все скомпилируется, просто при didTapAddToCart на скрине колбаса добавится в копию CartStore, а на табе и в самом картсторе ничего не поменяется
+//
+//Если после этого везде заменить let на var — что покажет badge.text и почему?
+//а он и так ничего не показывает))
