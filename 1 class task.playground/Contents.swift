@@ -33,32 +33,36 @@ struct Product {
 // MARK: - Твой код
 
 final class CartStore {
-    // TODO: items, add(_:), remove(productId:), count, total
-    
-    private var arrayOfProduct: [Product]
+    private(set) var items: [Product] = [] {
+        didSet {counter(); totalCalc()}
+    }
+    private(set) var count = 0
+    private(set) var total: Decimal = 0
     
     func add(_ product:Product) {
-        arrayOfProduct.insert(product, at: product.id)
+        items.append(product)
     }
     
-    func remove(_ product:Product) {
-        arrayOfProduct.remove(at: product.id)
+    func remove(productId: Int) {
+        items.removeAll(where: { $0.id == productId})
     }
     
-    func count() -> Int {
-        arrayOfProduct.count
+    func counter() {
+        count = items.count
     }
     
-    func total () -> Decimal {
+    func totalCalc() {
         var sum: Decimal = 0
-        for element in arrayOfProduct {
+        for element in items {
             sum += element.price
         }
-        return sum
+        total = sum
     }
     
-    init (arrayOfProduct: [Product]) {
-        self.arrayOfProduct = arrayOfProduct
+    init (items: [Product] = [], count: Int = 0, total: Decimal = 0) {
+        self.items = items
+        self.count = count
+        self.total = total
     }
 }
 
