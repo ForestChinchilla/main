@@ -55,12 +55,9 @@ final class CartStore {
     }
     
     private func totalCalc() {
-        var sum: Decimal = 0
-        for element in items {
-            sum += element.price
-        }
-        total = sum
-    }
+        total = items.reduce(into: 0.0) { total, kolbasa in
+            total += kolbasa.price }
+}
     
     init (items: [Product] = []) {
         self.items = items
