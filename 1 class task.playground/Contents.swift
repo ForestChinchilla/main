@@ -34,7 +34,10 @@ struct Product {
 
 final class CartStore {
     private(set) var items: [Product] = [] {
-        didSet {counter(); totalCalc()}
+        didSet {
+            counter()
+            totalCalc()
+        }
     }
     private(set) var count = 0
     private(set) var total: Decimal = 0
@@ -47,11 +50,11 @@ final class CartStore {
         items.removeAll(where: { $0.id == productId})
     }
     
-    func counter() {
+    private func counter() {
         count = items.count
     }
     
-    func totalCalc() {
+    private func totalCalc() {
         var sum: Decimal = 0
         for element in items {
             sum += element.price
@@ -59,10 +62,8 @@ final class CartStore {
         total = sum
     }
     
-    init (items: [Product] = [], count: Int = 0, total: Decimal = 0) {
+    init (items: [Product] = []) {
         self.items = items
-        self.count = count
-        self.total = total
     }
 }
 
