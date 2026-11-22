@@ -56,11 +56,58 @@ final class Analytics {
 // MARK: - Твой код
 
 // TODO: TrackableScreen
+class TrackableScreen {
+    let screenName: String
+    var params: [String: String] = [:]
+    
+    init (screenName: String, params: [String: String]) {
+        self.screenName = screenName
+    }
+    
+    func viewDidAppear() {
+        Analytics.shared.log("screen_view", trackingParams())
+    }
+    
+    func trackingParams() -> [String: String] {
+        params["screen"] = "\(screenName)"
+        return params
+    }
+}
 
 // TODO: ProductScreen
-
+class ProductScreen: TrackableScreen {
+    let productId: Int
+    
+    init(productId:Int, params: [String: String] = [:]) {
+        self.productId = productId
+        super.init(screenName: "product", params: params)
+    }
+    override func trackingParams() -> [String: String] {
+        params["screen"] = "\(screenName)"
+        params["product_id"] = "\(productId)"
+        return params
+    }
+}
+    
 // TODO: CheckoutScreen
+class CheckoutScreen: TrackableScreen {
+    let itemsCount: Int
 
+    init(itemsCount: Int, params: [String: String] = [:]) {
+        self.itemsCount = itemsCount
+        super.init(screenName: "checkout",params: params)
+        Analytics.shared.log("screen_view", trackingParams())
+        
+    }
+    override func trackingParams() -> [String: String] {
+        params["screen"] = "\(screenName)"
+        return params
+    }
+    
+    override func viewDidAppear() {
+        Analytics.shared.log("begin_checkout", ["items":"\(itemsCount)"])
+    }
+}
 // MARK: - Проверки
 
 Analytics.shared.reset()
