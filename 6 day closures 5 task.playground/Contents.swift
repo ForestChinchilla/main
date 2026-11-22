@@ -35,54 +35,52 @@ func makeCount () -> () -> Int {
 // Если бы это было не так то в следующем коде на выводе были бы не нули
 //
 
-func makeCunt () -> () -> Int {
+typealias MyClosure = () -> Int
+
+func makeCunt() -> MyClosure {
     var cunt = 0
-    print("first:", cunt)           //
-    return {                        //потому что вторая кложура со счетчиком не принимает значения от первой там же (№1) -> (№2) -> Int
-        cunt += 1                   
-        print("second:",cunt)
+    print("1:", cunt)
+    let result = {
+        print("2:",cunt)
         return  cunt
     }
+    print("3:", cunt)
+    result()
+    print("4:", cunt)
+    cunt = 100
+    
+    return result
 }
 
-makeCunt() //first: 0
-makeCunt() //first: 0
-makeCunt() //first: 0
-
-//функция выполняется только до return
-//неверное потому что "ее никто не спрашивает" и ей некуда свой полезный ретурн отдавать
-
-
-// но я я не могу понять почему при первом вызове функция выполняет все, что до первого RETURN, а при последующих пропускает, ведь она должна присваивать 0 переменной cunt при каждом вызове
-//
-//оно как бы вот работает, но я пока хз как
-//
 let cuntA = makeCunt()
-print(cuntA())
-//first: 0
-//second: 1
-//1
+print("5")
+cuntA()
 
-print(cuntA())
-//second: 2
-//2
 
-print(cuntA())
-//second: 3
-//3
-
-func counter() -> () -> Int {
-    var coco = 0
-    print("Yo")
-    return {
-        coco += 1
-        return coco
-    }
-}
-let cococounter = counter() 
-let lococounter = counter()
-print(cococounter())
-print(cococounter())
-counter()
-print(cococounter())
-print(lococounter())
+////first: 0
+////second: 1
+////1
+//
+//print(cuntA())
+////second: 2
+////2
+//
+//print(cuntA())
+////second: 3
+////3
+//
+//func counter() -> () -> Int {
+//    var coco = 0
+//    print("Yo")
+//    return {
+//        coco += 1
+//        return coco
+//    }
+//}
+//let cococounter = counter() 
+//let lococounter = counter()
+//print(cococounter())
+//print(cococounter())
+//counter()
+//print(cococounter())
+//print(lococounter())
