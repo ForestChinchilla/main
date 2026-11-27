@@ -56,10 +56,54 @@ final class Analytics {
 // MARK: - Твой код
 
 // TODO: TrackableScreen
+class TrackableScreen {
+    let screenName: String
+    
+    init(screenName: String) {
+        self.screenName = screenName
+    }
+    
+    func viewDidAppear() {
+        var params = trackingParams()
+        params["screen"] = screenName
+        Analytics.shared.log("screen_view", params)
+    }
+    
+    func trackingParams() -> [String: String] {
+        return [:]
+    }
+}
 
 // TODO: ProductScreen
-
+final class ProductScreen: TrackableScreen {
+    let productId: Int
+    
+    init(productId: Int) {
+        self.productId = productId
+        super.init(screenName: "product")
+    }
+ 
+    override func trackingParams() -> [String: String] {
+        return [
+            "product_id": String(productId)
+        ]
+    }
+}
+    
 // TODO: CheckoutScreen
+final class CheckoutScreen: TrackableScreen {
+    let itemsCount: Int
+
+    init(itemsCount: Int) {
+        self.itemsCount = itemsCount
+        super.init(screenName: "checkout")  
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        Analytics.shared.log("begin_checkout", ["items": "\(itemsCount)"])
+    }
+}
 
 // MARK: - Проверки
 
