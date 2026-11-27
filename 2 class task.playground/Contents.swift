@@ -58,18 +58,18 @@ final class Analytics {
 // TODO: TrackableScreen
 class TrackableScreen {
     let screenName: String
-    fileprivate(set) var params: [String: String] = [:]
     
-    init (screenName: String) {
+    init(screenName: String) {
         self.screenName = screenName
     }
     
     func viewDidAppear() {
-        Analytics.shared.log("screen_view", trackingParams())
+        var params = trackingParams()
+        params["screen"] = screenName
+        Analytics.shared.log("screen_view", params)
     }
     
     func trackingParams() -> [String: String] {
-        params["screen"] = "\(screenName)"
         return [:]
     }
 }
@@ -78,14 +78,15 @@ class TrackableScreen {
 final class ProductScreen: TrackableScreen {
     let productId: Int
     
-    init(productId:Int, params: [String: String] = [:]) {
+    init(productId: Int) {
         self.productId = productId
         super.init(screenName: "product")
     }
+ 
     override func trackingParams() -> [String: String] {
-        params["screen"] = "\(screenName)"
-        params["product_id"] = "\(productId)"
-        return params
+        return [
+            "product_id": String(productId)
+        ]
     }
 }
     
@@ -93,23 +94,17 @@ final class ProductScreen: TrackableScreen {
 final class CheckoutScreen: TrackableScreen {
     let itemsCount: Int
 
-    init(itemsCount: Int, params: [String: String] = [:]) {
+    init(itemsCount: Int) {
         self.itemsCount = itemsCount
-        super.init(screenName: "checkout")
-        Analytics.shared.log("screen_view", trackingParams())
-        Analytics.shared.log("begin_checkout", ["items":"\(itemsCount)"])
-        
-    }
-    override func trackingParams() -> [String: String] {
-        params["screen"] = "\(screenName)"
-        return params
+        super.init(screenName: "checkout")  
     }
     
     override func viewDidAppear() {
-//        Analytics.shared.log("screen_view", trackingParams())
-//        Analytics.shared.log("begin_checkout", ["items":"\(itemsCount)"])
+        super.viewDidAppear()
+        Analytics.shared.log("begin_checkout", ["items": "\(itemsCount)"])
     }
 }
+
 // MARK: - Проверки
 
 Analytics.shared.reset()
