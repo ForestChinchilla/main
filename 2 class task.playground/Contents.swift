@@ -58,9 +58,9 @@ final class Analytics {
 // TODO: TrackableScreen
 class TrackableScreen {
     let screenName: String
-    var params: [String: String] = [:]
+    fileprivate(set) var params: [String: String] = [:]
     
-    init (screenName: String, params: [String: String]) {
+    init (screenName: String) {
         self.screenName = screenName
     }
     
@@ -70,17 +70,17 @@ class TrackableScreen {
     
     func trackingParams() -> [String: String] {
         params["screen"] = "\(screenName)"
-        return params
+        return [:]
     }
 }
 
 // TODO: ProductScreen
-class ProductScreen: TrackableScreen {
+final class ProductScreen: TrackableScreen {
     let productId: Int
     
     init(productId:Int, params: [String: String] = [:]) {
         self.productId = productId
-        super.init(screenName: "product", params: params)
+        super.init(screenName: "product")
     }
     override func trackingParams() -> [String: String] {
         params["screen"] = "\(screenName)"
@@ -90,13 +90,14 @@ class ProductScreen: TrackableScreen {
 }
     
 // TODO: CheckoutScreen
-class CheckoutScreen: TrackableScreen {
+final class CheckoutScreen: TrackableScreen {
     let itemsCount: Int
 
     init(itemsCount: Int, params: [String: String] = [:]) {
         self.itemsCount = itemsCount
-        super.init(screenName: "checkout",params: params)
+        super.init(screenName: "checkout")
         Analytics.shared.log("screen_view", trackingParams())
+        Analytics.shared.log("begin_checkout", ["items":"\(itemsCount)"])
         
     }
     override func trackingParams() -> [String: String] {
@@ -105,7 +106,8 @@ class CheckoutScreen: TrackableScreen {
     }
     
     override func viewDidAppear() {
-        Analytics.shared.log("begin_checkout", ["items":"\(itemsCount)"])
+//        Analytics.shared.log("screen_view", trackingParams())
+//        Analytics.shared.log("begin_checkout", ["items":"\(itemsCount)"])
     }
 }
 // MARK: - Проверки
